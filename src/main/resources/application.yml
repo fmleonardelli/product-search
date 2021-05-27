@@ -1,0 +1,26 @@
+application:
+  name: "product-search"
+
+management:
+  endpoints:
+    web:
+      base-path: /product-search
+      path-mapping:
+        health: /health
+
+spring:
+  h2.console: true
+  path: h2
+  datasource:
+    url: jdbc:h2:mem:productsearchdb
+    type: com.zaxxer.hikari.HikariDataSource
+    minIdle: 5
+    maxPoolSize: 25
+    idleTimeout: 30000
+    maxWait: 250
+    maxLifeTime: 600000
+  jpa:
+    hibernate:
+      ddl-auto: none
+      show-sql: true
+      format_sql: true

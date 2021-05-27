@@ -1,0 +1,54 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'jacoco'
+}
+
+group = 'com.capitole'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+jacoco {
+	toolVersion = "0.8.6"
+	reportsDir = file("$buildDir/reports/jacoco")
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'com.zaxxer:HikariCP'
+	compile('com.h2database:h2')
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+	environment("APPLICATION", "product-search")
+	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+	dependsOn test
+	reports {
+		xml.enabled true
+		html.enabled true
+	}
+
+	afterEvaluate {
+		def excludedClasses = [
+		]
+
+		classDirectories.setFrom files(classDirectories.files.collect {
+			fileTree(dir: it, exclude: excludedClasses)
+		})
+	}
+}
