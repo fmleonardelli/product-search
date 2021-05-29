@@ -1,6 +1,9 @@
-package com.capitole.productsearch.core.entity;
+package com.capitole.productsearch.core.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
@@ -10,9 +13,7 @@ public class Price {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
+    private Long brandId;
 
     private LocalDateTime startDate;
 
@@ -35,8 +36,8 @@ public class Price {
         return id;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public Long getBrandId() {
+        return brandId;
     }
 
     public LocalDateTime getStartDate() {

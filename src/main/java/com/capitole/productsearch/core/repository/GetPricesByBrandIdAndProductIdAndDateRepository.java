@@ -1,11 +1,15 @@
 package com.capitole.productsearch.core.repository;
 
-import com.capitole.productsearch.core.entity.Price;
+import com.capitole.productsearch.core.model.Price;
+import com.capitole.productsearch.core.exception.ProductSearchException;
+import io.vavr.collection.List;
+import io.vavr.control.Either;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public interface GetPricesByBrandIdAndProductIdAndDateRepository {
 
-    List<Price> execute(final Long brandId, final Long productId, final LocalDateTime date);
+    Either<ProductSearchException, List<Price>> execute(final Long brandId,
+                                                        final Long productId,
+                                                        final LocalDateTime date);
 }
