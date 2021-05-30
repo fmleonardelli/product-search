@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 @Service
 public class GetPricesByBrandIdAndProductIdAndDateDBRepository implements GetPricesByBrandIdAndProductIdAndDateRepository {
 
-    private final PriceJpaRepository priceClient;
+    private PriceJpaRepository priceClient;
 
-    public GetPricesByBrandIdAndProductIdAndDateDBRepository(final PriceJpaRepository priceClient) {
+    public GetPricesByBrandIdAndProductIdAndDateDBRepository(PriceJpaRepository priceClient) {
         this.priceClient = priceClient;
     }
 

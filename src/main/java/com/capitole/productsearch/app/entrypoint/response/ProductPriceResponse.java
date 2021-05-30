@@ -1,6 +1,7 @@
 package com.capitole.productsearch.app.entrypoint.response;
 
 import com.capitole.productsearch.core.model.Price;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
 
@@ -13,12 +14,12 @@ public class ProductPriceResponse {
     private LocalDateTime endDate;
     private Double price;
 
-    private ProductPriceResponse(final Long productId,
-                                 final Long brandId,
-                                 final Long priceListId,
-                                 final LocalDateTime startDate,
-                                 final LocalDateTime endDate,
-                                 final Double price) {
+    public ProductPriceResponse(@JsonProperty("product_id") final Long productId,
+                                @JsonProperty("brand_id") final Long brandId,
+                                @JsonProperty("price_list_id") final Long priceListId,
+                                @JsonProperty("start_date") final LocalDateTime startDate,
+                                @JsonProperty("end_date") final LocalDateTime endDate,
+                                @JsonProperty("price") final Double price) {
         this.productId = productId;
         this.brandId = brandId;
         this.priceListId = priceListId;
@@ -58,5 +59,14 @@ public class ProductPriceResponse {
 
     public Double getPrice() {
         return price;
+    }
+
+    public Boolean compare(final ProductPriceResponse other) {
+        return productId.equals(other.productId) &&
+                brandId.equals(other.brandId) &&
+                priceListId.equals(other.priceListId) &&
+                startDate.equals(other.startDate) &&
+                endDate.equals(other.endDate) &&
+                price.equals(other.price);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.time.LocalDateTime;
 
@@ -29,6 +30,15 @@ public class ErrorHandler {
                 ex.getMessage(),
                 "Resource Error"),
                 HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ErrorMessage> formatHandler(final MethodArgumentTypeMismatchException ex) {
+        LOGGER.error(ex.getMessage(), ex);
+        return new ResponseEntity<>(new ErrorMessage(LocalDateTime.now(),
+                ex.getMessage(),
+                "Format Error"),
+                HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)

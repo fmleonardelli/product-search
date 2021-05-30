@@ -23,6 +23,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 
 	implementation 'com.zaxxer:HikariCP'
 	implementation 'com.h2database:h2:1.4.200'
@@ -33,6 +34,7 @@ dependencies {
 	compile 'io.vavr:vavr-jackson:0.10.3'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'com.h2database:h2:1.4.200'
 }
 
 test {
@@ -50,6 +52,7 @@ jacocoTestReport {
 
 	afterEvaluate {
 		def excludedClasses = [
+				"com/capitole/productsearch/Application**"
 		]
 
 		classDirectories.setFrom files(classDirectories.files.collect {

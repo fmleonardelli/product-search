@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS price (
     price_list_id BIGINT NOT NULL,
     product_id BIGINT NOT NULL,
     priority INT NOT NULL,
-    price FLOAT(6) NOT NULL,
+    price DECIMAL(10, 4) NOT NULL,
     curr CHAR(3),
     CONSTRAINT brand_id_fk FOREIGN KEY (brand_id) REFERENCES brand(id)
 );
