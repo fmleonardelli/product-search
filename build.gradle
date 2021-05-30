@@ -60,3 +60,9 @@ jacocoTestReport {
 		})
 	}
 }
+
+bootJar {
+	manifest {
+		attributes 'Start-Class': 'com.capitole.productsearch.Application'
+	}
+}
