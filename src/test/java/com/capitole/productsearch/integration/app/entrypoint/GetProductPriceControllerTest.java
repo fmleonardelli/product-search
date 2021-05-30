@@ -46,7 +46,7 @@ public class GetProductPriceControllerTest extends ApplicationTests {
     }
 
     @Test
-    public void test_when_not_found_data_with_the_request() throws Exception {
+    public void test_when_not_found_data_product_price() throws Exception {
         var randomLong = UUID.randomUUID().getLeastSignificantBits();
         mockMvc.perform(
                 get("/brands/{brandId}/products/{productId}", randomLong, randomLong)
@@ -55,7 +55,7 @@ public class GetProductPriceControllerTest extends ApplicationTests {
     }
 
     @Test
-    public void test_case_one_() throws Exception {
+    public void test_case_one_when_only_one_price_applies() throws Exception {
         var brandId = 1L;
         var productId = 35455L;
         var date = "2020-06-14T10:00:00";
@@ -76,7 +76,7 @@ public class GetProductPriceControllerTest extends ApplicationTests {
     }
 
     @Test
-    public void test_case_two_() throws Exception {
+    public void test_case_two_when_two_price_applies_in_same_dates_and_the_priority_define_the_final_result() throws Exception {
         var brandId = 1L;
         var productId = 35455L;
         var date = "2020-06-14T16:00:00";
@@ -97,7 +97,7 @@ public class GetProductPriceControllerTest extends ApplicationTests {
     }
 
     @Test
-    public void test_case_three_() throws Exception {
+    public void test_case_three_when_only_one_price_applies_because_the_end_date_is_closer() throws Exception {
         var brandId = 1L;
         var productId = 35455L;
         var date = "2020-06-14T21:00:00";
@@ -118,7 +118,7 @@ public class GetProductPriceControllerTest extends ApplicationTests {
     }
 
     @Test
-    public void test_case_four_() throws Exception {
+    public void test_case_four_when_two_price_applies_in_different_dates_and_the_priority_define_the_final_result() throws Exception {
         var brandId = 1L;
         var productId = 35455L;
         var date = "2020-06-15T10:00:00";
@@ -139,7 +139,7 @@ public class GetProductPriceControllerTest extends ApplicationTests {
     }
 
     @Test
-    public void test_case_five_() throws Exception {
+    public void test_case_two_price_applies_in_different_dates_and_the_priority_define_the_final_result() throws Exception {
         var brandId = 1L;
         var productId = 35455L;
         var date = "2020-06-16T21:00:00";
