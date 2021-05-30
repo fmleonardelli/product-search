@@ -1,18 +1,19 @@
 application:
   name: "product-search"
 
+server:
+  servlet:
+    context-path: /product-search
+
 management:
   endpoints:
     web:
-      base-path: /product-search
+      base-path: /
       path-mapping:
         health: /health
 
 spring:
-  h2.console: true
-  path: h2
   datasource:
-    url: jdbc:h2:mem:productsearchdb
     type: com.zaxxer.hikari.HikariDataSource
     minIdle: 5
     maxPoolSize: 25
@@ -22,5 +23,9 @@ spring:
   jpa:
     hibernate:
       ddl-auto: none
-      show-sql: true
-      format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:/db/migration
+    baseline-on-migrate: true
+    baseline-version: 0
+
