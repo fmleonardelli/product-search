@@ -4,10 +4,10 @@
  
 ### Tecnologies
 
-- Java Development Kit 11 Oracle.
-- Spring Boot Framework: Web, Data, Actuator.
-- Gradle.
-- Vavr: Functional Features.
+- [Java Development Kit 11 Oracle](https://www.oracle.com/ar/java/technologies/javase-jdk11-downloads.htmlhttps://www.oracle.com/ar/java/technologies/javase-jdk11-downloads.html).
+- [Spring Boot](https://spring.io/projects/spring-boot) : Web, Data, Actuator, Test.
+- [Gradle](https://gradle.org/).
+- [Vavr](https://www.vavr.io/): Functional Features.
 - H2 database (for DEV scope).
 - MySql 8 (for STAGE scope).
 - Flyway: DB Control Version
@@ -37,6 +37,9 @@ The app when run locally use the 8080 port.
 - Clean Arquitecture is used.
 - This app use Vavr for use the Monads Either and Option.
 - The nature of the problem applies to the use of a non-relation db maybe Mongo would be the most appropiate, but it was decided not to implement(like other features) it to comply with the exercise.
+
+### Contributors
+- **Facundo Leonardelli**: facundoleonardelli@gmail.com 
 
 
 
