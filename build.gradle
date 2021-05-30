@@ -22,12 +22,19 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+
 	implementation 'com.zaxxer:HikariCP'
-	compile('com.h2database:h2')
+	implementation 'com.h2database:h2:1.4.200'
+	implementation 'mysql:mysql-connector-java:8.0.18'
+	implementation 'org.flywaydb:flyway-core:7.9.0'
+
+	compile 'io.vavr:vavr:0.10.3'
+	compile 'io.vavr:vavr-jackson:0.10.3'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'com.h2database:h2:1.4.200'
 }
 
 test {
@@ -45,10 +52,17 @@ jacocoTestReport {
 
 	afterEvaluate {
 		def excludedClasses = [
+				"com/capitole/productsearch/Application**"
 		]
 
 		classDirectories.setFrom files(classDirectories.files.collect {
 			fileTree(dir: it, exclude: excludedClasses)
 		})
+	}
+}
+
+bootJar {
+	manifest {
+		attributes 'Start-Class': 'com.capitole.productsearch.Application'
 	}
 }
