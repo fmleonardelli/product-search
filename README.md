@@ -34,7 +34,8 @@ The app when run locally use the 8080 port.
 - Api doc (Swagger): {host}/product-search/swagger-ui/
 
 ### Notes
-- This app use Vavr for use the Monads Either and Option
+- Clean Arquitecture is used.
+- This app use Vavr for use the Monads Either and Option.
 - The nature of the problem applies to the use of a non-relation db maybe Mongo would be the most appropiate, but it was decided not to implement(like other features) it to comply with the exercise.
 
 
