@@ -2,6 +2,9 @@
 
  The actual objetive of Product Seach Api is to make a service available to check the current price for a product in specified date.
  
+ - [Product Search Heroku](https://product-price-search.herokuapp.com/product-search/swagger-ui/)
+
+ 
 ### Tecnologies
 
 - [Java Development Kit 11 Oracle](https://www.oracle.com/ar/java/technologies/javase-jdk11-downloads.htmlhttps://www.oracle.com/ar/java/technologies/javase-jdk11-downloads.html).
@@ -16,7 +19,8 @@
 
 ### Build
 
-- **Dev Scope**: this profile connects to the h2 database. This profile is used locally and the version installed in Heroku
+- **Dev Scope**: this profile connects to the h2 database. **This profile is used locally and the version installed in Heroku**.
+ 
 For run locally, in the root folder project:
 
 ```
@@ -34,7 +38,6 @@ docker-compose up
 ```
 
 ### Execution/Api Doc
-
 The app when run locally use the 8080 port.
 
 - HealthCheck: {host}/product-search/health
